@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_subscription_id: 1
+  challenge: 
+  completed: false
+
+two:
+  group_subscription_id: 1
+  challenge: 
+  completed: false
