@@ -2,22 +2,61 @@
 
 ## API Endpoints
 
-### Static pages
+### **Static pages**
 
-### Static pages routes
+1. **Render frontend root container here**
 
-#### *Render frontend root container here*
+- GET / static_pages#root
 
-GET / static_pages#root
+### **Auth Routes**
 
-### Auth Routes
+1. **Log user in to a session**
 
+- POST /api/session(.:format) api/sessions#create {:format=>:json}
 
-#### *Log user in to a session*
+*Request body:*
 
-POST /api/session(.:format) api/sessions#create {:format=>:json}
+```json
+    {
+      "user": {
+          "username": "adinylol3",
+          "password": "password"
+      }
+    }
+```
 
-Request body:
+*Response body:*
+
+```json
+{
+  "id":1,"username":"adinylol3"
+}
+```
+
+2. **Delete user from a session**
+
+- DELETE /api/session(.:format) api/sessions#destroy {:format=>:json}
+
+### **Users Routes**
+
+1. **View all users**
+
+- GET /api/users(.:format) api/users#index {:format=>:json}
+
+*respose body:*
+
+```json
+{
+  "2":{"id":2,"username":"adinylol4"},
+  "1":{"id":1,"username":"adinylol3"}
+}
+```
+
+2. **Create new user**
+
+- POST /api/users(.:format) api/users#create {:format=>:json}
+
+*Request body:*
 
 ```json
 {
@@ -28,54 +67,19 @@ Request body:
 }
 ```
 
-Response body:
+*Response body:*
 
 ```json
 {"id":1,"username":"adinylol3"}
 ```
 
-#### *Delete user from a session*
+3. **Users search**
 
-DELETE /api/session(.:format) api/sessions#destroy {:format=>:json}
+- GET /api/users/search/:query(.:format) api/users#search {:format=>:json}
 
-### Users Routes
+- Ex. uri*/api/users/search/adinylol*
 
-#### *View all users*
-
-GET /api/users(.:format) api/users#index {:format=>:json}
-
-respose body:
-{"2":{"id":2,"username":"adinylol4"},"1":{"id":1,"username":"adinylol3"}}
-
-#### *Create new user*
-
-POST /api/users(.:format) api/users#create {:format=>:json}
-
-Request body:
-
-```json
-{
-  "user": {
-      "username": "adinylol3",
-      "password": "password"
-  }
-}
-```
-
-Response body:
-
-```json
-{"id":1,"username":"adinylol3"}
-```
-
-#### *Usesrs search*
-
-GET /api/users/search/:query(.:format) api/users#search {:format=>:json}
-
-Example query:
-uri*/api/users/search/adinylol*
-
-Response body:
+*Response body:*
 
 ```json
 {
