@@ -236,7 +236,7 @@ Ex. request: localhost:3000/api/groups/1/pay
 }
 ```
 
-2. **Verify a challengr**
+2. **Verify a challenge**
 
 - PATCH
 - /api/challenges/:id
