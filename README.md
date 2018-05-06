@@ -195,6 +195,14 @@ Ex. request: localhost:3000/api/groups/13/challenges
 ]
 ```
 
+3. **Make group members pay if unverified challenge**
+
+- GET
+- /api/:id/pay (.:format) 
+- api/groups#create {:format=>:json}
+
+Ex. request: localhost:3000/api/groups/1/pay
+
 ### **Challenge Routes**
 
 1. **Create challenge w/ name, description, verified, expiration, user_id, group_id**
