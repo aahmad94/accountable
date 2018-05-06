@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     # auth
     resources :users, only: [:create, :index]
     resources :groups, only: [:create, :index]
-    # resource :session, only: [:create, :destroy]
+    resource :challenges, only: [:create]
 
     match '/session', :controller => 'sessions', :action => 'create', :via => :options
     match '/session', :controller => 'sessions', :action => 'destroy', :via => :delete

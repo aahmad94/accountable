@@ -4,6 +4,9 @@ class Challenge < ApplicationRecord
     foreign_key: :group_subscription_id,
     class_name: :GroupSubscription 
 
-    belongs_to :user,
+    has_many :users,
+      through: :group_subscription
+
+    has_many :groups,
       through: :group_subscription
 end

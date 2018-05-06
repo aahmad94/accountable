@@ -1,9 +1,11 @@
 class Api::GroupsController < ApplicationController
   def create
     # users ~ arr of users
-    group_name = params[:group][:group_name]
-    user_ids = params[:group][:user_ids]
-    buy_in = params[:group][:buy_in]
+    p "------------ GROUP PARAMS --------------"
+    group_name = params[:group_name]
+    p params
+    user_ids = params[:user_ids]
+    buy_in = params[:buy_in]
 
     @group = Group.new({"group_name": group_name, "buy_in": buy_in })
     @group.save

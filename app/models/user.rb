@@ -15,8 +15,8 @@ class User < ApplicationRecord
   has_many :groups,
     through: :group_subscriptions
 
-  # has_many :challenges,
-  #   through: :group_subscriptions
+  has_many :challenges,
+    through: :group_subscriptions
 
   # ---------- Search ----------
 

@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506042946) do
+ActiveRecord::Schema.define(version: 20180506060513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "challenges", force: :cascade do |t|
     t.integer "group_subscription_id", null: false
-    t.text "body", null: false
-    t.boolean "completed", null: false
+    t.text "description", null: false
+    t.boolean "verified", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "expiration"
   end
 
   create_table "group_subscriptions", force: :cascade do |t|

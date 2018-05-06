@@ -11,9 +11,8 @@ class GroupSubscription < ApplicationRecord
     foreign_key: :group_id,
     class_name: :Group
 
-  # has_many :challenges,
-  #   primary_key: :id,
-  #   foreign_key: :group_subscription_id,
-  #   class_name: :Challenges
-
+  has_many :challenges,
+    primary_key: :id,
+    foreign_key: :group_subscription_id,
+    class_name: :Challenge
 end
