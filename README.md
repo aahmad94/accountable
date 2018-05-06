@@ -88,15 +88,9 @@
 }
 ```
 
-### **Groups**
+### **Group Routes**
 
 1. **Create group w/ group_name, user_ids, and buy_in**
-
-- GET / static_pages#root
-
-### **Auth Routes**
-
-1. **Log user in to a session**
 
 - POST
 - /api/groups(.:format) 
