@@ -1,8 +1,5 @@
 class Api::ChallengesController < ApplicationController
   def create
-    p "---------- CHALLENGES PARAMS ---------- "
-    p params
-
     name = params[:name]
     description = params[:description]
     verified = params[:verified]
@@ -19,5 +16,12 @@ class Api::ChallengesController < ApplicationController
     @challenge.save
 
     render :show 
+  end 
+
+  def update
+    @challenge = Challenge.find(params[:id])
+    @challenge.update({ "verified": "true" })
+    
+    render :show
   end 
 end

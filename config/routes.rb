@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     as: 'api_group_challenges',
     defaults: { format: :json }
   
+  # ---------- challenges ----------
+  patch '/api/challenges/:id' => 'api/challenges#update'
+
   # ---------- groups ----------
   # post '/api/groups/initialize' => 'api/groups#initialize',
   #   as: 'api_groups_initialize',

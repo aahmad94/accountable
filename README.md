@@ -198,3 +198,23 @@ Ex. request: localhost:3000/api/groups/13/challenges
   "expiration":"2018-05-14T06:22:46.000Z"
 }
 ```
+
+2. **Verify a challengr**
+
+- PATCH
+- /api/challenges/:id
+- api/challenges#update 
+
+Ex. request: localhost:3000/api/challenges/4
+
+*Response body:*
+
+```json
+{
+  "id": 4,
+  "name": "play basketball",
+  "description": "shoot 50 baskets everyday this week",
+  "verified": false,
+  "expiration": "2018-05-14T06:22:46.000Z"
+}
+```
