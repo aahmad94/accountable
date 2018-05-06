@@ -96,7 +96,6 @@
 - /api/groups(.:format) 
 - api/groups#create {:format=>:json}
 
-
 *Request body:*
 
 ```json
@@ -115,5 +114,38 @@
 {
   "id":1,
   "group_name":"alpha","buy_in":5
+}
+```
+
+### **Challenge Routes**
+
+1. **Create challenge w/ name, description, verified, expiration, user_id, group_id**
+
+- POST
+- /api/challenges(.:format)
+- api/challenges#create {:format=>:json}
+
+*Request body:*
+
+```json
+{
+  "name": "speed jumproping",
+  "description": "practice jumping roping 3 times a day for ~10 min every other day in the week",
+  "verified": "false",
+  "expiration": "2018-05-13T23:22:46-07:00",
+  "user_id": "1",
+  "group_id": "13"
+}
+```
+
+*Response body:*
+
+```json
+{
+  "id":3,
+  "name":"speed jumproping",
+  "description":"practice jumping roping 3 times a day for ~10 min every other day in the week",
+  "verified":false,
+  "expiration":"2018-05-14T06:22:46.000Z"
 }
 ```
