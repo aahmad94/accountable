@@ -3,9 +3,9 @@ class Api::GroupsController < ApplicationController
     # users ~ arr of users
     group_name = params[:group][:group_name]
     user_ids = params[:group][:user_ids]
-    pool = params[:group][:pool]
+    buy_in = params[:group][:buy_in]
 
-    @group = Group.new({"group_name": group_name, "pool": pool })
+    @group = Group.new({"group_name": group_name, "buy_in": buy_in })
     @group.save
     
     user_ids.each do |user_id|

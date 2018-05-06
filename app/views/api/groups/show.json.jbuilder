@@ -1,4 +1,4 @@
 json.extract! @group,
               :id,
               :group_name,
-              :pool
+              :buy_in
