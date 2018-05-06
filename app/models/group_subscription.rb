@@ -6,9 +6,14 @@ class GroupSubscription < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
-  has_many :challenges,
+  belongs_to :group,
     primary_key: :id,
-    foreign_key: :group_subscription_id,
-    class_name: :Challenges
+    foreign_key: :group_id,
+    class_name: :Group
+
+  # has_many :challenges,
+  #   primary_key: :id,
+  #   foreign_key: :group_subscription_id,
+  #   class_name: :Challenges
 
 end

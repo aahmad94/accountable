@@ -7,14 +7,13 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  # has_many :group_subscriptions,
-  #   primary_key: :id,
-  #   foreign_key: :user_id,
-  #   class_name: :GroupSubscription,
-  #   dependent: destroy
+  has_many :group_subscriptions,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :GroupSubscription
 
-  # has_many :groups,
-  #   through: :group_subscriptions
+  has_many :groups,
+    through: :group_subscriptions
 
   # has_many :challenges,
   #   through: :group_subscriptions
