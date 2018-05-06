@@ -91,7 +91,7 @@
 4. **User's groups**
 
 - GET
-- /api/users/groups/:id
+- /api/users/:id/groups/
 - api/users#groups
 
 - Ex. localhost:3000/api/users/groups/1*

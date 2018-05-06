@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   
   # ---------- users ----------
-  get '/api/users/groups/:id' => 'api/users#groups',
+  get '/api/users/:id/groups/' => 'api/users#groups',
     as: 'api_users_groups',
     defaults: { format: :json }
 
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   patch '/api/challenges/:id' => 'api/challenges#update'
 
   # ---------- groups ----------
+  get '/api/groups/:id/pay' => 'api/groups#pay'
+
   # post '/api/groups/initialize' => 'api/groups#initialize',
   #   as: 'api_groups_initialize',
   #   defaults: { format: :json }

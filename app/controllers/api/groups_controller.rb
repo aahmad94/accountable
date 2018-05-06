@@ -37,4 +37,10 @@ class Api::GroupsController < ApplicationController
     end
     render json: result.uniq.to_json
   end
+
+  def pay
+    p "----------- SUBMIT PAY ------------"
+    params[:id]
+  end
+
 end
