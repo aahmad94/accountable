@@ -88,6 +88,35 @@
 }
 ```
 
+4. **User's groups**
+
+- GET
+- /api/users/groups/:id
+- api/users#groups
+
+- Ex. localhost:3000/api/users/groups/1*
+
+*Response body:*
+
+```json
+[
+  {
+      "id": 1,
+      "group_name": "alpha",
+      "created_at": "2018-05-06T04:59:59.740Z",
+      "updated_at": "2018-05-06T04:59:59.740Z",
+      "buy_in": 5
+  },
+  {
+      "id": 3,
+      "group_name": "beta",
+      "created_at": "2018-05-06T06:16:04.733Z",
+      "updated_at": "2018-05-06T06:16:04.733Z",
+      "buy_in": 5
+  }
+]
+```
+
 ### **Group Routes**
 
 1. **Create group w/ group_name, user_ids, and buy_in**

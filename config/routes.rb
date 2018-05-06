@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     match '/session', :controller => 'sessions', :action => 'destroy', :via => :delete
   end
   
-  # ---------- users_search ----------
+  # ---------- users ----------
+  get '/api/users/groups/:id' => 'api/users#groups',
+    as: 'api_users_groups',
+    defaults: { format: :json }
+
   get '/api/users/search/:query' => 'api/users#search',
     as: 'api_users_search',
     defaults: { format: :json }

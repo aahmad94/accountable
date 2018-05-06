@@ -20,6 +20,13 @@ class Api::UsersController < ApplicationController
     render :index
   end
 
+  def groups
+    user_id = params[:id]
+    groups = User.find(user_id).groups
+
+    render json: groups.to_json
+  end 
+
   private
 
   def user_params
