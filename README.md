@@ -17,12 +17,12 @@
 *Request body:*
 
 ```json
-    {
-      "user": {
-          "username": "adinylol3",
-          "password": "password"
-      }
-    }
+{
+  "user": {
+      "username": "adinylol3",
+      "password": "password"
+  }
+}
 ```
 
 *Response body:*
@@ -85,5 +85,41 @@
 {
   "2": {"id":2,"username":"adinylol4"},
   "1": {"id":1,"username":"adinylol3}
+}
+```
+
+### **Groups**
+
+1. **Create group w/ group_name, user_ids, and buy_in**
+
+- GET / static_pages#root
+
+### **Auth Routes**
+
+1. **Log user in to a session**
+
+- POST
+- /api/groups(.:format) 
+- api/groups#create {:format=>:json}
+
+
+*Request body:*
+
+```json
+{
+  "group": {
+    "group_name": "alpha",
+    "user_ids": [1, 2],
+    "buy_in": 5
+  }
+}
+```
+
+*Response body:*
+
+```json
+{
+  "id":1,
+  "group_name":"alpha","buy_in":5
 }
 ```

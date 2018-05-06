@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     # resource :session, only: [:create, :destroy]
 
     match '/session', :controller => 'sessions', :action => 'create', :via => :options
+    match '/session', :controller => 'sessions', :action => 'destroy', :via => :delete
   end
   
   # ---------- users_search ----------
