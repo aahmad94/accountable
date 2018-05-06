@@ -117,6 +117,55 @@
 }
 ```
 
+2. **Get all challenges in group w/ corresponding user information**
+
+- GET
+- /api/group/:id/challenges
+- api/groups#challenges
+
+Ex. request: localhost:3000/api/groups/13/challenges
+
+*Response body:*
+
+```json
+[
+  {
+    "user":
+      {
+        "id": 1,
+        "username":"adinylol1"
+      },
+    "challenge":
+      {
+        "id": 3,
+        "group_subscription_id": 15,
+        "description": "practice jumping roping 3 times a day for ~10 min every other day in the week",
+        "verified": false,
+        "created_at": "2018-05-06T07:37:11.971Z",
+        "updated_at": "2018-05-06T07:37:11.971Z",
+        "name":"speed jumproping",
+        "expiration":"2018-05-14T06:22:46.000Z"
+      }
+  },
+  {
+    "user":
+      {
+        "id": 2,
+        "username":"adinylol2"
+      },
+    "challenge":
+      {
+        "id":4,"group_subscription_id":16,"description":"shoot 50 baskets everyday this week",
+        "verified":false,
+        "created_at":"2018-05-06T16:07:36.691Z",
+        "updated_at":"2018-05-06T16:07:36.691Z",
+        "name":"play basketball",
+        "expiration":"2018-05-14T06:22:46.000Z"
+      }
+  }
+]
+```
+
 ### **Challenge Routes**
 
 1. **Create challenge w/ name, description, verified, expiration, user_id, group_id**
