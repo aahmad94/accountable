@@ -1,4 +1,72 @@
-# README
+# Accountable
+
+Stay healthy, make bets with your friends, for money and for glory. 
+
+Rails back-end provides endpoints to:
+
+1. Creating an account
+2. Log in/out session
+3. Create a group
+4. Invite people to a group with a set buy-in value
+5. Create a weekly challenge
+6. Verify group members' challenge
+7. Make payments via demo credit card for each user via Softheon payments API
+
+## Database associations
+
+```ruby
+# ---------- User ----------
+has_many :group_subscriptions,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: :GroupSubscription
+
+has_many :groups,
+  through: :group_subscriptions
+
+has_many :challenges,
+  through: :group_subscriptions
+
+# ---------- Group ----------
+has_many :group_subscriptions,
+  primary_key: :id,
+  foreign_key: :group_id,
+  class_name: :GroupSubscription
+
+has_many :users,
+  through: :group_subscriptions
+
+has_many :challenges,
+  through: :group_subscriptions
+
+# ---------- GroupSubscription ----------
+belongs_to :user,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: :User
+
+belongs_to :group,
+  primary_key: :id,
+  foreign_key: :group_id,
+  class_name: :Group
+
+has_many :challenges,
+  primary_key: :id,
+  foreign_key: :group_subscription_id,
+  class_name: :Challenge
+
+# ---------- Challenge ----------
+belongs_to :group_subscription,
+  primary_key: :id,
+  foreign_key: :group_subscription_id,
+  class_name: :GroupSubscription 
+
+has_one :user,
+  through: :group_subscription
+
+has_one :group,
+  through: :group_subscription
+```
 
 ## API Endpoints
 

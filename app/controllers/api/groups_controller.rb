@@ -25,7 +25,7 @@ class Api::GroupsController < ApplicationController
     temp = {}
     group_id = params[:id]
     Group.find(group_id).challenges.each do |challenge| 
-      user = challenge.users.pluck(:id, :username)
+      user = challenge.user.pluck(:id, :username)
       p challenge
       if user.length > 0
         temp["user"] = { "id": user[0][0], "username": user[0][1] }
