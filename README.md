@@ -12,7 +12,51 @@ Rails back-end provides endpoints to:
 6. Verify group members' challenge
 7. Make payments via demo credit card for each user via Softheon payments API
 
-## Database associations
+## Softheon API
+
+```ruby
+def pay
+    group_id = params[:id]
+    group = Group.find(group_id)
+
+    buy_in = group["buy_in"]
+    group.users.each do |user|
+      group_subscription = GroupSubscription.where({ "user_id": user.attributes["id"], "group_id": group.attributes["id"]}).first
+      group_member_challenge = group_subscription.challenge
+
+      if group_member_challenge && !group_member_challenge["verified"]
+        softheon_api(buy_in)
+      end 
+
+    end
+
+  end
+
+  def softheon_api(buy_in = 1, user = nil)
+    uri = URI.parse("https://hack.softheon.io/api/payments/v1/payments")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.add_field("Authorization", "Bearer PAYMENTS_TOKEN")
+
+    # in non-demo, each user would have a payment token that would be used here
+    request.set_form_data(
+      {
+        "paymentAmount": buy_in,
+        "description": "Payment of balance due",
+        "referenceId": "example_payment",
+        "paymentMethod": {
+          "paymentToken": "CREDIT_CARD_TOKEN",
+          "type": "Credit Card"
+        }
+      }
+    )
+    response = http.request(request)
+    response.code
+  end
+```
+
+## Models
 
 ```ruby
 # ---------- User ----------
@@ -50,7 +94,7 @@ belongs_to :group,
   foreign_key: :group_id,
   class_name: :Group
 
-has_many :challenges,
+has_one :challenge,
   primary_key: :id,
   foreign_key: :group_subscription_id,
   class_name: :Challenge
@@ -266,8 +310,8 @@ Ex. request: localhost:3000/api/groups/13/challenges
 3. **Make group members pay if unverified challenge**
 
 - GET
-- /api/:id/pay (.:format) 
-- api/groups#create {:format=>:json}
+- /api/:id/pay (.:format)
+- api/groups#pay {:format=>:json}
 
 Ex. request: localhost:3000/api/groups/1/pay
 
